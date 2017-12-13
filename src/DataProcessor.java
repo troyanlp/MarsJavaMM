@@ -14,6 +14,7 @@ public class DataProcessor {
 		this.data = input;
 		this.gridX = x;
 		this.gridY = y;
+		manager.SetGrid(x, y);
 	}
 	
 	public void ProcessData() {
