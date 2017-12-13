@@ -17,12 +17,14 @@ public class TestMarsRover {
 			while(reader.hasNextLine()) {
 				inputs.add(reader.nextLine());
 				if(inputs.getLast().compareToIgnoreCase("stop") == 0) {
+					inputs.poll();
 					inputs.pollLast();
 					break;
 				}
 			}
-			System.out.println("Ha salido del while");
-			//String size = reader.next();
+			DataProcessor processor = new DataProcessor();
+			processor.LoadData(inputs, width, height);
+			processor.ProcessData();
 		}else if(decision.compareToIgnoreCase("file") == 0) {
 			
 		}

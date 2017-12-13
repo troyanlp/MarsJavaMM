@@ -10,13 +10,13 @@ public class Rover {
 		this.x = x;
 		this.y = y;
 		this.heading = heading;
-		System.out.println("Mars Rover created with position " + x + "," + y+ " and direction " + heading);
+		//System.out.println("Mars Rover created with position " + x + "," + y+ " and direction " + heading);
 	}
 	
-	public void Move(char direction) {
+	public void Move() {
 		//Check if it can move to that square
 		//Move
-		switch(direction) {
+		switch(heading) {
 		case 'N':
 			y +=1;
 			break;
@@ -31,6 +31,30 @@ public class Rover {
 			break;
 		}
 	}
+	
+	public void Turn(boolean right) {
+		char newDir = ' ';
+		switch(heading) {
+		case 'N':
+			if(right) newDir = 'E';
+			else newDir = 'W';
+			break;
+		case 'S':
+			if(right) newDir = 'W';
+			else newDir = 'E';
+			break;
+		case 'W':
+			if(right) newDir = 'N';
+			else newDir = 'S';
+			break;
+		case 'E':
+			if(right) newDir = 'S';
+			else newDir = 'N';
+			break;
+		}
+		if(newDir != ' ') heading = newDir;
+	}
+	
 
 	public int getX() {
 		return x;
