@@ -58,5 +58,32 @@ public class DataProcessor {
 			}
 		}
 	}
+	
+	public void ReadGridSize(String line) {
+		int j = 0;
+		gridX = 0;
+		while(!Character.isWhitespace(line.charAt(j))) {
+			gridX *= 10;
+			gridX += Character.getNumericValue(line.charAt(j));
+			j++;
+		}
+
+		j++;
+		gridY = 0;
+		while(j < line.length()) {
+			gridY *= 10;
+			gridY += Character.getNumericValue(line.charAt(j));
+			j++;
+		}
+		
+	}
+	
+	public int GetGridX() {
+		return gridX;
+	}
+	
+	public int GetGridY() {
+		return gridY;
+	}
 
 }

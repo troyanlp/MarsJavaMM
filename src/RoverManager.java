@@ -41,7 +41,7 @@ public class RoverManager {
 			}
 			break;
 		case 'S':
-			if((aux.getY() - 1) > 0) {
+			if((aux.getY() - 1) >= 0) {
 				if(rovers.size() == 1) return true;
 				else {
 					boolean found = false;
@@ -65,7 +65,7 @@ public class RoverManager {
 			}
 			break;
 		case 'W':
-			if((aux.getX() - 1) > 0) {
+			if((aux.getX() - 1) >= 0) {
 				if(rovers.size() == 1) return true;
 				else {
 					boolean found = false;
