@@ -25,20 +25,56 @@ public class RoverManager {
 	}
 	
 	public boolean CanMove() {
-		//Check if is inside the grid
+		//Check if is inside the grid and if the next square is free (no other rover)
 		Rover aux = rovers.getLast();
 		switch(aux.getHeading()) {
 		case 'N':
-			if((aux.getY() + 1) <= height) return true;
+			if((aux.getY() + 1) <= height) {
+				if(rovers.size() == 1) return true;
+				else {
+					boolean found = false;
+					for(int i=0; i<(rovers.size()-1); i++) {
+						if(rovers.get(i).getX() == aux.getX() && rovers.get(i).getY() == (aux.getY() + 1)) found = true; 
+					}
+					return !found;
+				}
+			}
 			break;
 		case 'S':
-			if((aux.getY() - 1) > 0) return true;
+			if((aux.getY() - 1) > 0) {
+				if(rovers.size() == 1) return true;
+				else {
+					boolean found = false;
+					for(int i=0; i<(rovers.size()-1); i++) {
+						if(rovers.get(i).getX() == aux.getX() && rovers.get(i).getY() == (aux.getY() - 1)) found = true; 
+					}
+					return !found;
+				}
+			}
 			break;
 		case 'E':
-			if((aux.getX() + 1) <= width) return true;
+			if((aux.getX() + 1) <= width) {
+				if(rovers.size() == 1) return true;
+				else {
+					boolean found = false;
+					for(int i=0; i<(rovers.size()-1); i++) {
+						if(rovers.get(i).getX() == (aux.getX() + 1) && rovers.get(i).getY() == aux.getY()) found = true; 
+					}
+					return !found;
+				}
+			}
 			break;
 		case 'W':
-			if((aux.getX() - 1) > 0) return true;
+			if((aux.getX() - 1) > 0) {
+				if(rovers.size() == 1) return true;
+				else {
+					boolean found = false;
+					for(int i=0; i<(rovers.size()-1); i++) {
+						if(rovers.get(i).getX() == (aux.getX() - 1) && rovers.get(i).getY() == aux.getY()) found = true; 
+					}
+					return !found;
+				}
+			}
 			break;
 		}
 		return false;
