@@ -20,7 +20,9 @@ public class RoverManager {
 			Rover aux = rovers.getLast();
 			if(CanMove()) aux.Move();
 		}else {
-			rovers.getLast().Turn(order == 'R' || order == 'r');
+			if(order == 'R' || order == 'r' || order == 'L' || order == 'l') {
+				rovers.getLast().Turn(order == 'R' || order == 'r');
+			}
 		}
 	}
 	
