@@ -55,7 +55,3 @@ The Rover number 5 has an invalid initial position and was not created. <br />
 
 ## Built With
 * [Eclipse](https://www.eclipse.org/) - The IDE used
-
-## License
-
-This project is licensed under the GNU General Public License - see the [LICENSE.md](LICENSE.md) file for details
