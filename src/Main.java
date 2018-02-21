@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class TestMarsRover {
+public class Main {
 
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
@@ -30,10 +30,10 @@ public class TestMarsRover {
 			processor.LoadData(inputs, width, height);
 			processor.ProcessData();
 		}else if(decision.compareToIgnoreCase("file") == 0) {
-			System.out.println("Write the name of the file (Must be inside the src folder).");
+			System.out.println("Write the name of the file (Must be inside the \"Test Files\" folder).");
 			String filePath = reader.next();
 			System.out.println(".\\src\\" + filePath);
-			try (Stream<String> stream = Files.lines(Paths.get(".\\src\\" + filePath), Charset.defaultCharset())) {
+			try (Stream<String> stream = Files.lines(Paths.get(".\\Test Files\\" + filePath), Charset.defaultCharset())) {
 				String[] lines = stream.toArray(size -> new String[size]);
 		        LinkedList<String> inputs = new LinkedList<>();
 		        DataProcessor processor = new DataProcessor();
