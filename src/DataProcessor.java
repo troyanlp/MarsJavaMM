@@ -23,9 +23,12 @@ public class DataProcessor {
 		}else {
 			//Create Rovers
 			boolean roverPos = true;
+			boolean invalidPos = false;
+			int invalidRovers = 0;
 			for(int i=0; i<data.size(); i++) {
 				if(roverPos) {
 					//Initial position of a Rover
+					invalidPos = false;
 					String line = data.get(i);
 					int j = 0;
 					int posX = 0;
@@ -43,16 +46,28 @@ public class DataProcessor {
 					}
 					j++;
 					char direction = line.charAt(j);
-					//Create the Rover
-					manager.AddRover(posX, posY, direction);
+					//Check if the position is inside the grid
+					if((posX >= 0 && posX <= gridX) && (posY >= 0 && posY <= gridY)) {
+						//Create the Rover
+						manager.AddRover(posX, posY, direction);
+					}else {
+						//Invalid rover position
+						invalidPos = true;
+						System.out.println("The Rover number " + (manager.GetNumRovers()+invalidRovers+1) + " has an invalid initial position and was not created.");
+						invalidRovers++;
+					}
+					
 					
 				}else {
 					//Orders for the rover
-					String line = data.get(i);
-					for(int j=0; j<line.length(); j++) {
-						manager.MoveRover(line.charAt(j));
+					if(!invalidPos) {
+						String line = data.get(i);
+						for(int j=0; j<line.length(); j++) {
+							manager.MoveRover(line.charAt(j));
+						}
+						manager.PrintOutput();
 					}
-					manager.PrintOutput();
+					
 				}
 				roverPos = !roverPos;
 			}

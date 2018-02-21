@@ -89,5 +89,8 @@ public class RoverManager {
 		this.width = x;
 		this.height = y;
 	}
-
+	
+	public int GetNumRovers() {
+		return rovers.size();
+	}
 }
