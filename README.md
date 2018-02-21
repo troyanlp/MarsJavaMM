@@ -17,41 +17,41 @@ This project includes 2 text files to test the program:
 
 This text file has the input example given with the problem. It's main purpose is to validate with the expected output:
 
-Test Input:
-5 5
-1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
+Test Input: <br />
+5 5 <br />
+1 2 N <br />
+LMLMLMLMM <br />
+3 3 E <br />
+MMRMMRMRRM <br />
  
-Expected Output:
-1 3 N
-5 1 E
+Expected Output: <br />
+1 3 N <br />
+5 1 E <br />
 
 
 ### Testing.txt
 
 This text file is to test possible bugs and unexpected behaviours like inserting a wrong command, initializing a Rover outside of the grid, trying to move outside of the grid...
 
-Test Input:
-5 5
-4 6 N
-LMLMLMLMM
-1 2 N
-LMiLkMLTMLSMMV
-6 4 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
-6 6 N
-LMLMLMLMM
+Test Input: <br />
+5 5 <br />
+4 6 N <br />
+LMLMLMLMM <br />
+1 2 N <br />
+LMiLkMLTMLSMMV <br />
+6 4 N <br />
+LMLMLMLMM <br />
+3 3 E <br />
+MMRMMRMRRM <br />
+6 6 N <br />
+LMLMLMLMM <br />
 
-Expected Output:
-The Rover number 1 has an invalid initial position and was not created.
-1 3 N
-The Rover number 3 has an invalid initial position and was not created.
-5 1 E
-The Rover number 5 has an invalid initial position and was not created.
+Expected Output: <br />
+The Rover number 1 has an invalid initial position and was not created. <br />
+1 3 N <br />
+The Rover number 3 has an invalid initial position and was not created. <br />
+5 1 E <br />
+The Rover number 5 has an invalid initial position and was not created. <br />
 
 ## Built With
 * [Eclipse](https://www.eclipse.org/) - The IDE used
