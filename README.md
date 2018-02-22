@@ -6,7 +6,7 @@ This program is a Rover Controller simulator where we pretend we land a number o
 
 ### Instructions:
 
-This program is based on the user input and it has to follow certain guidelines. This is an example of a file with inputs:
+This program is based on the user input and it has to follow certain guidelines. This is an example of a file with inputs:<br />
 5 5  -> This line indicates the size of the grid, each axys separated by a white space. <br />
 1 2 N -> This line indicates the position of a Rover (1,2) and the direction its facing (North) separated by a white space.<br />
 LMLMLMLMM -> This line indicates the orders we want to communicate to the Rover created above.<br />
