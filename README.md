@@ -23,6 +23,7 @@ Indications:
 - If a command in the order line is not one of the stated above it will be ignored.
 - If a Rover is placed outside of the given grid there will be an error message but if there are other valid Rovers, those will work normally. The error message is: "The Rover number X has an invalid initial position and was not created."
 - If there's no input or there's just the grid size as input there will be the following error message: "No valid data!"
+- If the name of the input file doesn't exist or isn't found the program will output: "File not found!"
 
 This program has 2 ways to input the data:
 

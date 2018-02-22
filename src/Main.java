@@ -11,7 +11,10 @@ public class Main {
 		Scanner reader = new Scanner(System.in);
 		System.out.println("How do you want to input the data? Write 'console' or 'file'.");
 		String decision = reader.next();
+		IReader testReader;
 		if(decision.compareToIgnoreCase("console") == 0) {
+			testReader = new ConsoleReader();
+			testReader.Read();
 			System.out.println("Enter the size of the grid: ");
 			int width = reader.nextInt();
 			int height = reader.nextInt();
@@ -30,6 +33,8 @@ public class Main {
 			processor.LoadData(inputs, width, height);
 			processor.ProcessData();
 		}else if(decision.compareToIgnoreCase("file") == 0) {
+			testReader = new FileReader();
+			testReader.Read();
 			System.out.println("Write the name of the file (Must be inside the \"Test Files\" folder).");
 			String filePath = reader.next();
 			System.out.println(".\\src\\" + filePath);
