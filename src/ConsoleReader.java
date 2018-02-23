@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class ConsoleReader implements IReader {
 
 	public ConsoleReader() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

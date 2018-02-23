@@ -16,9 +16,11 @@ public class Main {
 			testReader = new ConsoleReader();
 		}else if(decision.compareToIgnoreCase("file") == 0) {
 			testReader = new FileReader();
-			
+		}else System.out.println("No valid input mode.");
+		
+		if (testReader != null) {
+			testReader.Read();
 		}
-		if (!testReader.equals(null)) testReader.Read();
 		//once finished
 		reader.close(); 
 	}

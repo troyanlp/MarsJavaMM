@@ -34,11 +34,7 @@ public class RoverManager {
 			if((aux.getY() + 1) <= height) {
 				if(rovers.size() == 1) return true;
 				else {
-					boolean found = false;
-					for(int i=0; i<(rovers.size()-1); i++) {
-						if(rovers.get(i).getX() == aux.getX() && rovers.get(i).getY() == (aux.getY() + 1)) found = true; 
-					}
-					return !found;
+					return CheckPosition(aux, 0, 1);
 				}
 			}
 			break;
@@ -46,11 +42,7 @@ public class RoverManager {
 			if((aux.getY() - 1) >= 0) {
 				if(rovers.size() == 1) return true;
 				else {
-					boolean found = false;
-					for(int i=0; i<(rovers.size()-1); i++) {
-						if(rovers.get(i).getX() == aux.getX() && rovers.get(i).getY() == (aux.getY() - 1)) found = true; 
-					}
-					return !found;
+					return CheckPosition(aux, 0, -1);
 				}
 			}
 			break;
@@ -58,11 +50,7 @@ public class RoverManager {
 			if((aux.getX() + 1) <= width) {
 				if(rovers.size() == 1) return true;
 				else {
-					boolean found = false;
-					for(int i=0; i<(rovers.size()-1); i++) {
-						if(rovers.get(i).getX() == (aux.getX() + 1) && rovers.get(i).getY() == aux.getY()) found = true; 
-					}
-					return !found;
+					return CheckPosition(aux, 1, 0);
 				}
 			}
 			break;
@@ -70,11 +58,7 @@ public class RoverManager {
 			if((aux.getX() - 1) >= 0) {
 				if(rovers.size() == 1) return true;
 				else {
-					boolean found = false;
-					for(int i=0; i<(rovers.size()-1); i++) {
-						if(rovers.get(i).getX() == (aux.getX() - 1) && rovers.get(i).getY() == aux.getY()) found = true; 
-					}
-					return !found;
+					return CheckPosition(aux, -1, 0);
 				}
 			}
 			break;
@@ -94,5 +78,15 @@ public class RoverManager {
 	
 	public int GetNumRovers() {
 		return rovers.size();
+	}
+	
+	private boolean CheckPosition(Rover rover, int x, int y) {
+		boolean found = false;
+		for(int i=0; i<(rovers.size()-1); i++) {
+			if(rovers.get(i).getX() == (rover.getX() + x) && rovers.get(i).getY() == rover.getY() + y) {
+				found = true; 
+			}
+		}
+		return !found;
 	}
 }

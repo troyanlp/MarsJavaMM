@@ -48,12 +48,8 @@ public class DataProcessor {
 					}
 					j++;
 					char direction = line.charAt(j);
-					if((Character.toLowerCase(direction) != Character.toLowerCase('N')) &&
-						(Character.toLowerCase(direction) != Character.toLowerCase('W')) &&
-						(Character.toLowerCase(direction) != Character.toLowerCase('S')) &&
-						(Character.toLowerCase(direction) != Character.toLowerCase('E'))) {
-						return false;
-					}
+					if(!CheckDirection(direction)) return false;
+					
 					//Check if the position is inside the grid
 					if((posX >= 0 && posX <= gridX) && (posY >= 0 && posY <= gridY)) {
 						//Create the Rover
@@ -115,6 +111,16 @@ public class DataProcessor {
 	
 	public int GetGridY() {
 		return gridY;
+	}
+	
+	private boolean CheckDirection(char dir) {
+		if((Character.toLowerCase(dir) != Character.toLowerCase('N')) &&
+				(Character.toLowerCase(dir) != Character.toLowerCase('W')) &&
+				(Character.toLowerCase(dir) != Character.toLowerCase('S')) &&
+				(Character.toLowerCase(dir) != Character.toLowerCase('E'))) {
+				return false;
+			}
+		return true;
 	}
 
 }
