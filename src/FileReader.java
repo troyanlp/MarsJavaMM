@@ -32,14 +32,16 @@ public class FileReader implements IReader {
 	        for(int i=1; i< lines.length; i++) {
 	        	inputs.add(lines[i]);
 	        }
-
-	        processor.LoadData(inputs, processor.GetGridX(), processor.GetGridY());
-	        boolean fileOK = processor.ProcessData();
-	        if(!fileOK) System.out.println("No valid file values.");
-	        
+	        ProcessFile(processor, inputs);
         }else {
         	System.out.println("No valid grid size values.");
         }
+	}
+	
+	private void ProcessFile(DataProcessor processor, LinkedList<String> inputs) {
+		processor.LoadData(inputs, processor.GetGridX(), processor.GetGridY());
+        boolean fileOK = processor.ProcessData();
+        if(!fileOK) System.out.println("No valid file values.");
 	}
 
 }

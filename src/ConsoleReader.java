@@ -27,15 +27,19 @@ public class ConsoleReader implements IReader {
 					break;
 				}
 			}
-			DataProcessor processor = new DataProcessor();
-			processor.LoadData(inputs, width, height);
-			boolean dataOK = processor.ProcessData();
-			if(!dataOK) System.out.println("No valid input values.");
+			ProcessInput(inputs, width, height);
 		}else {
 			System.out.println("No valid grid size values.");
 		}
 		
 		reader.close(); 
 	}
-
+	
+	private void ProcessInput(LinkedList<String> inputs, int width, int height) {
+		DataProcessor processor = new DataProcessor();
+		processor.LoadData(inputs, width, height);
+		boolean dataOK = processor.ProcessData();
+		if(!dataOK) System.out.println("No valid input values.");
+	}
+	
 }
