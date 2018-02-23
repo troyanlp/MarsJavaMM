@@ -10,55 +10,65 @@ public class RoverManager {
 		
 	}
 	
-	public void AddRover(int x, int y, char heading) {
+	public int getNumRovers() {
+		return rovers.size();
+	}
+	
+	public void addRover(int x, int y, char heading) {
 		Rover rover = new Rover(x,y,heading);
 		rovers.add(rover);
 	}
 	
-	public void MoveRover(char order) {
-		if(order == 'M' || order == 'm') {
+	public void moveRover(char order) {
+		if (order == 'M' || order == 'm') {
 			Rover aux = rovers.getLast();
-			if(CanMove()) aux.Move();
-		}else {
-			if(order == 'R' || order == 'r' || order == 'L' || order == 'l') {
-				rovers.getLast().Turn(order == 'R' || order == 'r');
+			if (canMove()) {
+				aux.move();
+			}
+		} else {
+			if (order == 'R' || order == 'r' || order == 'L' || order == 'l') {
+				rovers.getLast().turn(order == 'R' || order == 'r');
 			}
 		}
 	}
 	
-	public boolean CanMove() {
+	public boolean canMove() {
 		//Check if is inside the grid and if the next square is free (no other rover)
 		Rover aux = rovers.getLast();
-		switch(aux.getHeading()) {
+		switch (aux.getHeading()) {
 		case 'N':
-			if((aux.getY() + 1) <= height) {
-				if(rovers.size() == 1) return true;
-				else {
-					return CheckPosition(aux, 0, 1);
+			if ((aux.getY() + 1) <= height) {
+				if(rovers.size() == 1) {
+					return true;
+				} else {
+					return checkPosition(aux, 0, 1);
 				}
 			}
 			break;
 		case 'S':
-			if((aux.getY() - 1) >= 0) {
-				if(rovers.size() == 1) return true;
-				else {
-					return CheckPosition(aux, 0, -1);
+			if ((aux.getY() - 1) >= 0) {
+				if (rovers.size() == 1) {
+					return true;
+				} else {
+					return checkPosition(aux, 0, -1);
 				}
 			}
 			break;
 		case 'E':
-			if((aux.getX() + 1) <= width) {
-				if(rovers.size() == 1) return true;
-				else {
-					return CheckPosition(aux, 1, 0);
+			if ((aux.getX() + 1) <= width) {
+				if (rovers.size() == 1) {
+					return true;
+				} else {
+					return checkPosition(aux, 1, 0);
 				}
 			}
 			break;
 		case 'W':
-			if((aux.getX() - 1) >= 0) {
-				if(rovers.size() == 1) return true;
-				else {
-					return CheckPosition(aux, -1, 0);
+			if ((aux.getX() - 1) >= 0) {
+				if (rovers.size() == 1) {
+					return true;
+				} else {
+					return checkPosition(aux, -1, 0);
 				}
 			}
 			break;
@@ -66,27 +76,25 @@ public class RoverManager {
 		return false;
 	}
 	
-	public void PrintOutput() {
-		Rover aux = rovers.getLast();
-		System.out.println(aux.getX() + " " + aux.getY() + " " + aux.getHeading());
-	}
-	
-	public void SetGrid(int x, int y) {
-		this.width = x;
-		this.height = y;
-	}
-	
-	public int GetNumRovers() {
-		return rovers.size();
-	}
-	
-	private boolean CheckPosition(Rover rover, int x, int y) {
+	private boolean checkPosition(Rover rover, int x, int y) {
 		boolean found = false;
-		for(int i=0; i<(rovers.size()-1); i++) {
-			if(rovers.get(i).getX() == (rover.getX() + x) && rovers.get(i).getY() == rover.getY() + y) {
+		for (int i=0; i<(rovers.size()-1); i++) {
+			if (rovers.get(i).getX() == (rover.getX() + x) && 
+				rovers.get(i).getY() == rover.getY() + y) {
 				found = true; 
 			}
 		}
 		return !found;
 	}
+	
+	public void printOutput() {
+		Rover aux = rovers.getLast();
+		System.out.println(aux.getX() + " " + aux.getY() + " " + aux.getHeading());
+	}
+	
+	public void setGrid(int x, int y) {
+		this.width = x;
+		this.height = y;
+	}
+	
 }

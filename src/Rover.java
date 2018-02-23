@@ -10,13 +10,12 @@ public class Rover {
 		this.x = x;
 		this.y = y;
 		this.heading = heading;
-		//System.out.println("Mars Rover created with position " + x + "," + y+ " and direction " + heading);
 	}
 	
-	public void Move() {
+	public void move() {
 		//Check if it can move to that square
-		//Move
-		switch(heading) {
+		//move
+		switch (heading) {
 		case 'N':
 			y +=1;
 			break;
@@ -32,27 +31,41 @@ public class Rover {
 		}
 	}
 	
-	public void Turn(boolean right) {
+	public void turn(boolean right) {
 		char newDir = ' ';
-		switch(heading) {
+		switch (heading) {
 		case 'N':
-			if(right) newDir = 'E';
-			else newDir = 'W';
+			if (right) {
+				newDir = 'E';
+			} else {
+				newDir = 'W';
+			}
 			break;
 		case 'S':
-			if(right) newDir = 'W';
-			else newDir = 'E';
+			if (right) {
+				newDir = 'W';
+			} else {
+				newDir = 'E';
+			}
 			break;
 		case 'W':
-			if(right) newDir = 'N';
-			else newDir = 'S';
+			if (right) {
+				newDir = 'N';
+			} else {
+				newDir = 'S';
+			}
 			break;
 		case 'E':
-			if(right) newDir = 'S';
-			else newDir = 'N';
+			if (right) {
+				newDir = 'S';
+			} else {
+				newDir = 'N';
+			}
 			break;
 		}
-		if(newDir != ' ') heading = newDir;
+		if (newDir != ' ') {
+			heading = newDir;
+		}
 	}
 	
 
@@ -79,9 +92,5 @@ public class Rover {
 	public void setHeading(char heading) {
 		this.heading = heading;
 	}
-	
-	
-	
-	
 
 }

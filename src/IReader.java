@@ -1,4 +1,4 @@
 
 public interface IReader {
-	void Read();
+	void read();
 }

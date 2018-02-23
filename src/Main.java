@@ -12,14 +12,16 @@ public class Main {
 		System.out.println("How do you want to input the data? Write 'console' or 'file'.");
 		String decision = reader.next();
 		IReader testReader = null;
-		if(decision.compareToIgnoreCase("console") == 0) {
+		if (decision.compareToIgnoreCase("console") == 0) {
 			testReader = new ConsoleReader();
-		}else if(decision.compareToIgnoreCase("file") == 0) {
+		} else if(decision.compareToIgnoreCase("file") == 0) {
 			testReader = new FileReader();
-		}else System.out.println("No valid input mode.");
+		} else {
+			System.out.println("No valid input mode.");
+		}
 		
 		if (testReader != null) {
-			testReader.Read();
+			testReader.read();
 		}
 		//once finished
 		reader.close(); 
