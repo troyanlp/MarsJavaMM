@@ -9,8 +9,6 @@ public class ConsoleReader implements IReader {
 
 	@Override
 	public void Read() {
-		// TODO Auto-generated method stub
-		System.out.println("Console Reader");
 		
 		System.out.println("Enter the size of the grid: ");
 		Scanner reader = new Scanner(System.in);
@@ -32,7 +30,8 @@ public class ConsoleReader implements IReader {
 			}
 			DataProcessor processor = new DataProcessor();
 			processor.LoadData(inputs, width, height);
-			processor.ProcessData();
+			boolean dataOK = processor.ProcessData();
+			if(!dataOK) System.out.println("No valid input values.");
 		}else {
 			System.out.println("No valid grid size values.");
 		}

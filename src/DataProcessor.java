@@ -17,7 +17,7 @@ public class DataProcessor {
 		manager.SetGrid(x, y);
 	}
 	
-	public void ProcessData() {
+	public boolean ProcessData() {
 		if(data.size() == 0) {
 			System.out.print("No valid data!");
 		}else {
@@ -33,6 +33,7 @@ public class DataProcessor {
 					int j = 0;
 					int posX = 0;
 					while(!Character.isWhitespace(line.charAt(j))) {
+						if(!Character.isDigit(line.charAt(j))) return false;
 						posX *= 10;
 						posX += Character.getNumericValue(line.charAt(j));
 						j++;
@@ -40,12 +41,19 @@ public class DataProcessor {
 					j++;
 					int posY = 0;
 					while(!Character.isWhitespace(line.charAt(j))) {
+						if(!Character.isDigit(line.charAt(j))) return false;
 						posY *= 10;
 						posY += Character.getNumericValue(line.charAt(j));
 						j++;
 					}
 					j++;
 					char direction = line.charAt(j);
+					if((Character.toLowerCase(direction) != Character.toLowerCase('N')) &&
+						(Character.toLowerCase(direction) != Character.toLowerCase('W')) &&
+						(Character.toLowerCase(direction) != Character.toLowerCase('S')) &&
+						(Character.toLowerCase(direction) != Character.toLowerCase('E'))) {
+						return false;
+					}
 					//Check if the position is inside the grid
 					if((posX >= 0 && posX <= gridX) && (posY >= 0 && posY <= gridY)) {
 						//Create the Rover
@@ -72,12 +80,16 @@ public class DataProcessor {
 				roverPos = !roverPos;
 			}
 		}
+		return true;
 	}
 	
-	public void ReadGridSize(String line) {
+	public boolean ReadGridSize(String line) {
+		if(line.length() == 0) return false;
+		
 		int j = 0;
 		gridX = 0;
 		while(!Character.isWhitespace(line.charAt(j))) {
+			if(!Character.isDigit(line.charAt(j))) return false;
 			gridX *= 10;
 			gridX += Character.getNumericValue(line.charAt(j));
 			j++;
@@ -86,11 +98,15 @@ public class DataProcessor {
 		j++;
 		gridY = 0;
 		while(j < line.length()) {
+			if(!Character.isDigit(line.charAt(j))) return false;
 			gridY *= 10;
 			gridY += Character.getNumericValue(line.charAt(j));
 			j++;
 		}
 		
+		if(gridX <= 0 || gridY <= 0) return false;
+		
+		return true;
 	}
 	
 	public int GetGridX() {
